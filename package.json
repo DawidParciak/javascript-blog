@@ -13,7 +13,7 @@
     "test:js": "eslint js/",
     "test:scss": "stylelint sass/",
     "build": "npm-run-all build:* && run test",
-    "build:sass": "sass --style=compressed --no--source-map sass:css",
+    "build:sass": "sass --style=compressed --no-source-map sass:css",
     "build:autoprefixer": "postcss css/*.css --use autoprefixer -d css",
     "build-dev": "npm-run-all build-dev:sass build:autoprefixer",
     "build-dev:sass": "sass --style=expanded --source-map sass:css",
