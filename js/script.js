@@ -96,15 +96,15 @@ generateTitleLinks();
 
 function generateTags(){
 
-  /* find all articles */
+  /* [DONE] find all articles */
 
   const articles = document.querySelectorAll(optArticleSelector);
 
-  /* START LOOP: for every article: */
+  /* [DONE] START LOOP: for every article: */
 
   for (let article of articles){
 
-    /* find tags wrapper */
+    /* [DONE] find tags wrapper */
 
     const tagsWrapper = article.querySelector(optArticleTagsSelector);
 
@@ -112,38 +112,106 @@ function generateTags(){
 
     let html = '';
 
-    /* get tags from data-tags attribute */
+    /* [DONE] get tags from data-tags attribute */
 
     const articleTags = article.getAttribute('data-tags');
 
-    /* split tags into array */
+    /* [DONE] split tags into array */
 
     const articleTagsArray = articleTags.split(' ');
 
-    /* START LOOP: for each tag */
+    /* [DONE] START LOOP: for each tag */
 
     for(let tag of articleTagsArray){
 
-      /* generate HTML of the link */
+      /* [DONE] generate HTML of the link */
 
       const linkHTMLTag = '<li><a href="#' + tag + '"><span>' + tag + '</span></a></li>';
 
-      /* add generated code to html variable */
+      /* [DONE] add generated code to html variable */
 
       html = html + linkHTMLTag + ' ';
 
-      /* END LOOP: for each tag */
+      /* [DONE] END LOOP: for each tag */
 
     }
 
-    /* insert HTML of all the links into the tags wrapper */
+    /* [DONE] insert HTML of all the links into the tags wrapper */
 
     tagsWrapper.innerHTML = html;
 
-    /* END LOOP: for every article: */
+    /* [DONE] END LOOP: for every article: */
 
   }
 
 }
 
 generateTags();
+
+function tagClickHandler(event){
+
+  /* [DONE] prevent default action for this event */
+
+  event.preventDefault();
+
+  /* [DONE] make new constant named "clickedElement" and give it the value of "this" */
+
+  const clickedElement = this;
+
+  /* [DONE] make a new constant "href" and read the attribute "href" of the clicked element */
+
+  const href = clickedElement.getAttribute('href');
+
+  /* [DONE] make a new constant "tag" and extract tag from the "href" constant */
+
+  const tag = href.replace('#tag-', '');
+
+  /* [DONE] find all tag links with class active */
+
+  const activeTags = document.querySelectorAll('a.active[href^="#tag-"]');
+
+  /* [DONE] START LOOP: for each active tag link */
+
+  for(let tag of activeTags){
+
+    /* [DONE] remove class active */
+
+    tag.articleTagsArray.remove('active');
+
+    /* [DONE] END LOOP: for each active tag link */
+
+  }
+
+  /* [DONE] find all tag links with "href" attribute equal to the "href" constant */
+
+  const tagHref = document.querySelectorAll('[href="' + href + '"]');
+
+  /* START LOOP: for each found tag link */
+
+  for(let tag of tagHref){
+
+    /* add class active */
+
+    tag.articleTagsArray.add('active');
+
+    /* END LOOP: for each found tag link */
+
+  }
+
+  /* execute function "generateTitleLinks" with article selector as argument */
+
+  generateTitleLinks('[data-tags~="' + tag + '"]');
+
+}
+
+function addClickListenersToTags(){
+  /* find all links to tags */
+
+  /* START LOOP: for each link */
+
+    /* add tagClickHandler as event listener for that link */
+
+  /* END LOOP: for each link */
+}
+
+addClickListenersToTags();
