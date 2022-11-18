@@ -186,32 +186,42 @@ function tagClickHandler(event){
 
   const tagHref = document.querySelectorAll('[href="' + href + '"]');
 
-  /* START LOOP: for each found tag link */
+  /* [DONE] START LOOP: for each found tag link */
 
   for(let tag of tagHref){
 
-    /* add class active */
+    /* [DONE] add class active */
 
     tag.articleTagsArray.add('active');
 
-    /* END LOOP: for each found tag link */
+    /* [DONE] END LOOP: for each found tag link */
 
   }
 
-  /* execute function "generateTitleLinks" with article selector as argument */
+  /* [DONE] execute function "generateTitleLinks" with article selector as argument */
 
   generateTitleLinks('[data-tags~="' + tag + '"]');
 
 }
 
 function addClickListenersToTags(){
-  /* find all links to tags */
 
-  /* START LOOP: for each link */
+  /* [DONE] find all links to tags */
 
-    /* add tagClickHandler as event listener for that link */
+  const allLinksToTags = document.querySelectorAll('a[href^="#tag-"]');
 
-  /* END LOOP: for each link */
+  /* [DONE] START LOOP: for each link */
+
+  for(let link of allLinksToTags){
+
+    /* [DONE] add tagClickHandler as event listener for that link */
+
+    link.addEventListener('click', tagClickHandler);
+
+    /* [DONE] END LOOP: for each link */
+
+  }
+
 }
 
 addClickListenersToTags();
