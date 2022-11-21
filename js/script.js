@@ -45,7 +45,8 @@ const titleClickHandler = function(event){
 const optArticleSelector = '.post',
   optTitleSelector = '.post-title',
   optTitleListSelector = '.titles',
-  optArticleTagsSelector = '.post-tags .list';
+  optArticleTagsSelector = '.post-tags .list',
+  optArticleAuthorSelector = '.post-author';
 
 
 function generateTitleLinks(customSelector = ''){
@@ -99,7 +100,6 @@ function generateTags(){
   /* [DONE] find all articles */
 
   const articles = document.querySelectorAll(optArticleSelector);
-  //console.log(articles);
 
   /* [DONE] START LOOP: for every article: */
 
@@ -108,32 +108,26 @@ function generateTags(){
     /* [DONE] find tags wrapper */
 
     const tagsWrapper = article.querySelector(optArticleTagsSelector);
-    //console.log(tagsWrapper);
 
     /* make html variable with empty string */
 
     let html = '';
-    //console.log('html=', html);
 
     /* [DONE] get tags from data-tags attribute */
 
     const articleTags = article.getAttribute('data-tags');
-    //console.log(articleTags);
 
     /* [DONE] split tags into array */
 
     const articleTagsArray = articleTags.split(' ');
-    //console.log(articleTagsArray);
 
     /* [DONE] START LOOP: for each tag */
 
     for(let tag of articleTagsArray){
-      //console.log(tag);
 
       /* [DONE] generate HTML of the link */
 
       const linkHTMLTag = `<li><a href="#tag-${tag}">${tag}</a></li>`;
-      //console.log(linkHTMLTag);
 
       /* [DONE] add generated code to html variable */
 
@@ -192,7 +186,6 @@ function tagClickHandler(event){
   /* [DONE] find all tag links with "href" attribute equal to the "href" constant */
 
   const tagHref = document.querySelectorAll('a[href="' + href + '"]');
-  console.log('tagHref:', tagHref);
 
   /* [DONE] START LOOP: for each found tag link */
 
@@ -233,3 +226,46 @@ function addClickListenersToTags(){
 }
 
 addClickListenersToTags();
+
+function generateAuthors(){
+
+  /* [DONE] find all articles */
+
+  const articles = document.querySelectorAll(optArticleSelector);
+
+  /* [DONE] START LOOP: for every article: */
+
+  for (let article of articles){
+
+    /* [DONE] find authors wrapper */
+
+    const authorsWrapper = article.querySelector(optArticleAuthorSelector);
+
+    /* make html variable with empty string */
+
+    let html = '';
+
+    /* [DONE] get tags from data-tags attribute */
+
+    const articleAuthor = article.getAttribute('data-author');
+
+    /* [DONE] generate HTML of the link */
+
+    const linkHTMLTag = `<a href="#author-${articleAuthor}">${articleAuthor}</a>`;
+
+    /* [DONE] add generated code to html variable */
+
+    html += linkHTMLTag;
+
+    /* [DONE] insert HTML of all the links into the tags wrapper */
+
+    authorsWrapper.innerHTML = html;
+
+    /* [DONE] END LOOP: for every article: */
+
+  }
+
+}
+
+generateAuthors();
+
