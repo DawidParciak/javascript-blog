@@ -84,12 +84,21 @@ body {
 
   .active {
     font-weight: bold;
+    opacity: 100%;
   }
 }
 
 .list-horizontal {
   li {
     display: inline-block;
+  }
+}
+
+.sidebar .tags li {
+  display: inline-block;
+  margin: 0 2px 0 2px;
+  a {
+    text-decoration: none;
   }
 }
 
@@ -122,3 +131,26 @@ body {
     margin: 0 10px 0 0;
   }
 }
+
+/* Tag sizes */
+
+.tag-size-1 {
+  font-size: 110%;
+  opacity: 70%;
+}
+
+.tag-size-2 {
+  font-size: 140%;
+  opacity: 80%;
+}
+
+.tag-size-3 {
+  font-size: 170%;
+  opacity: 90%;
+}
+
+.tag-size-4 {
+  font-size: 200%;
+  opacity: 100%;
+}
+
