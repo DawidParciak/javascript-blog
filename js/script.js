@@ -48,7 +48,7 @@ const optArticleSelector = '.post',
   optArticleTagsSelector = '.post-tags .list',
   optArticleAuthorSelector = '.post-author',
   optTagsListSelector = '.tags.list',
-  optCloudClassCount = '5',
+  optCloudClassCount = '4',
   optCloudClassPrefix = 'tag-size-';
 
 
@@ -209,7 +209,7 @@ function generateTags(){
 
     /* [NEW] generate code of a link and add it to allTagsHTML */
 
-    const tagLinkHTML ='<li><a class="' + optCloudClassPrefix + calculateTagClass(allTags[tag], tagsParams) + '" href="#tag-' + tag + '">' + tag + '</a>' + ' (' + allTags[tag] + ')' +'</li>';
+    const tagLinkHTML ='<li><a class="' + calculateTagClass(allTags[tag], tagsParams) + '" href="#tag-' + tag + '">' + tag + '</a></li>';
     console.log('tagLinkHTML:', tagLinkHTML);
 
     allTagsHTML += tagLinkHTML;
